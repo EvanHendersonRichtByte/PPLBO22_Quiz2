@@ -4,6 +4,13 @@
     <groupId>com.mycompany.pplbo22_quiz2</groupId>
     <artifactId>PPLBO22_Quiz2</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>mysql_connector</groupId>
+            <artifactId>mysql_connector</artifactId>
+            <version>8.0.28</version>
+        </dependency>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>

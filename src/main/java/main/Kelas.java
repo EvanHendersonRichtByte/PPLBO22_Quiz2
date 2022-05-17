@@ -1,7 +1,6 @@
 package main;
 
 import java.sql.*;
-import static main.Main.conn;
 import static main.Main.in;
 import static main.Main.rs;
 import static main.Main.st;
@@ -41,7 +40,7 @@ public class Kelas {
 
     public void update() {
         try {
-            this.read();
+            read();
             System.out.println("\nData kelas yang akan diubah");
             System.out.print("ID Kelas: ");
             this.id_kelas = in.nextInt();
@@ -64,7 +63,7 @@ public class Kelas {
 
     public void delete() {
         try {
-            this.read();
+            read();
             System.out.println("\nData kelas yang akan dihapus");
             System.out.print("ID Kelas: ");
             this.id_kelas = in.nextInt();

@@ -13,7 +13,7 @@ public class Main {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pplbo_quiz2", "root", "");
             System.out.println("Connected to database");
             st = conn.createStatement();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }

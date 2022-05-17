@@ -5,10 +5,6 @@ import static main.Main.in;
 import static main.Main.rs;
 import static main.Main.st;
 
-/**
- *
- * @author Evan Henderson
- */
 public class Mahasiswa {
 
     String nim, nama;

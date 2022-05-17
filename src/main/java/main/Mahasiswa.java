@@ -89,5 +89,4 @@ public class Mahasiswa {
             System.out.println("Data mahasiswa gagal dihapus, pastikan nim telah sesuai");
         }
     }
-
 }

@@ -14,9 +14,9 @@
 Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom.
 
 ### Anggota Tim
+[Arielia Zahwa](https://github.com/permisii)<br/>
 [Diva Gracia S.C.](https://github.com/diva-gsc)<br/>
 [Galur Arasy L.](https://github.com/EvanHendersonRichtByte/)<br/>
-[Ibnu Tsalis A.](https://github.com)<br/>
-[Arielia Zahwa](https://github.com)<br/>
-[Indira Irawati](https://github.com)
+[Ibnu Tsalis A.](https://github.com/i9191)<br/>
+[Indira Irawati](https://github.com/indira2906)
 

@@ -11,10 +11,10 @@ public class Kelas {
     String nama_kelas;
     // int id_dpa;
 
-    public Kelas(int id_kelas, String nama_kelas) {
-        this.id_kelas = id_kelas;
-        this.nama_kelas = nama_kelas;
-    }
+//    public Kelas(int id_kelas, String nama_kelas) {
+//        this.id_kelas = id_kelas;
+//        this.nama_kelas = nama_kelas;
+//    }
 
     public void create() {
         System.out.print("Masukkan nama kelas: ");
@@ -31,7 +31,7 @@ public class Kelas {
         try {
             rs = st.executeQuery("SELECT * FROM kelas");
             while (rs.next()) {
-                System.out.printf("\nID Kelas %-3dNama Kelas %-3s", rs.getInt("id_kelas"), rs.getString("nama_kelas"));
+                System.out.printf("ID Kelas %-3dNama Kelas %-3s\n", rs.getInt("id_kelas"), rs.getString("nama_kelas"));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -52,9 +52,9 @@ public class Kelas {
             } catch (SQLException e) {
                 System.out.println("Data kelas tidak ditemukan");
             }
-            System.out.print("Masukkan nama kelas: ");
+            System.out.print("\nMasukkan nama kelas: ");
             this.nama_kelas = in.next();
-            st.executeUpdate(String.format("UPDATE kelas SET nama_kelas VALUES('%s') WHERE id_kelas = %d", this.nama_kelas, this.id_kelas));
+            st.executeUpdate(String.format("UPDATE kelas SET nama_kelas = '%s' WHERE id_kelas = %d", this.nama_kelas, this.id_kelas));
             System.out.println("Data kelas telah diubah");
         } catch (SQLException e) {
             System.out.println("Data kelas gagal diubah, pastikan mahasiswa di kelas tersebut kosong");

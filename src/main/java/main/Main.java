@@ -80,25 +80,17 @@ public class Main {
                         }
                     }
                     case 4 -> {
-//                        Nilai n = new Nilai();
+                        Nilai n = new Nilai();
                         menu();
                         pil2 = in.nextInt();
                         switch (pil2) {
-                            case 1 -> {
-                            }
-                            case 2 -> {
-                            }
-                            case 3 -> {
-                            }
-                            case 4 -> {
-                            }
+                            case 1 -> n.create();
+                            case 2 -> n.read("0");
+                            case 3 -> n.update();
+                            case 4 -> n.delete();
                             default -> {
                             }
                         }
-//                            n.create();
-//                            n.read();
-//                            n.update();
-//                            n.delete();
                     }
                     case 5 -> {
                         Dosen dsn = new Dosen();
@@ -120,6 +112,9 @@ public class Main {
                         }
                     }
                     case 6 -> {
+                        st.close();
+                        conn.close();
+                        System.out.println("Disconnected from database!!");
                         break OUTER;
                     }
                     default ->

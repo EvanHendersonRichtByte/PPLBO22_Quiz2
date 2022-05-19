@@ -23,7 +23,8 @@ public class Main {
                 System.out.println("2. Mata Kuliah");
                 System.out.println("3. Kelas");
                 System.out.println("4. Nilai");
-                System.out.println("5. Keluar");
+                System.out.println("5. Dosen");
+                System.out.println("6. Keluar");
                 System.out.print("Pilihan menu : ");
                 pil1 = in.nextInt();
                 switch (pil1) {
@@ -36,11 +37,14 @@ public class Main {
                                 in.nextLine();
                                 mhs.create();
                             }
-                            case 2 -> mhs.read();
-                            case 3 -> mhs.update();
-                            case 4 -> mhs.delete();
+                            case 2 ->
+                                mhs.read();
+                            case 3 ->
+                                mhs.update();
+                            case 4 ->
+                                mhs.delete();
                             default -> {
-                                    }
+                            }
                         }
                     }
                     case 2 -> {
@@ -52,9 +56,12 @@ public class Main {
                                 in.nextLine();
                                 mk.create();
                             }
-                            case 2 -> Matkul.read();
-                            case 3 -> mk.update();
-                            case 4 -> mk.delete();
+                            case 2 ->
+                                Matkul.read();
+                            case 3 ->
+                                mk.update();
+                            case 4 ->
+                                mk.delete();
                         }
                     }
                     case 3 -> {
@@ -62,10 +69,14 @@ public class Main {
                         menu();
                         pil2 = in.nextInt();
                         switch (pil2) {
-                            case 1 -> kls.create();
-                            case 2 -> Kelas.read();
-                            case 3 -> kls.update();
-                            case 4 -> kls.delete();
+                            case 1 ->
+                                kls.create();
+                            case 2 ->
+                                Kelas.read();
+                            case 3 ->
+                                kls.update();
+                            case 4 ->
+                                kls.delete();
                         }
                     }
                     case 4 -> {
@@ -74,25 +85,45 @@ public class Main {
                         pil2 = in.nextInt();
                         switch (pil2) {
                             case 1 -> {
-                        }
+                            }
                             case 2 -> {
-                        }
+                            }
                             case 3 -> {
-                        }
+                            }
                             case 4 -> {
-                        }
+                            }
                             default -> {
-                        }
+                            }
                         }
 //                            n.create();
 //                            n.read();
 //                            n.update();
 //                            n.delete();
-                                        }
+                    }
                     case 5 -> {
+                        Dosen dsn = new Dosen();
+                        menu();
+                        pil2 = in.nextInt();
+                        switch (pil2) {
+                            case 1 -> {
+                                in.nextLine();
+                                dsn.create();
+                            }
+                            case 2 ->
+                                dsn.read();
+                            case 3 ->
+                                dsn.update();
+                            case 4 ->
+                                dsn.delete();
+                            default -> {
+                            }
+                        }
+                    }
+                    case 6 -> {
                         break OUTER;
                     }
-                    default -> System.out.println("Menu tidak ada");
+                    default ->
+                        System.out.println("Menu tidak ada");
                 }
             }
         } catch (SQLException e) {

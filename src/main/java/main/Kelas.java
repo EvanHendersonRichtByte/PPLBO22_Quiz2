@@ -15,7 +15,6 @@ public class Kelas {
 //        this.id_kelas = id_kelas;
 //        this.nama_kelas = nama_kelas;
 //    }
-
     public void create() {
         System.out.print("Masukkan nama kelas: ");
         this.nama_kelas = in.next();
@@ -31,7 +30,7 @@ public class Kelas {
         try {
             rs = st.executeQuery("SELECT * FROM kelas");
             while (rs.next()) {
-                System.out.printf("ID Kelas %-3dNama Kelas %-3s\n", rs.getInt("id_kelas"), rs.getString("nama_kelas"));
+                System.out.printf("ID Kelas: %-3dNama Kelas: %-3s\n", rs.getInt("id_kelas"), rs.getString("nama_kelas"));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -47,7 +46,7 @@ public class Kelas {
             try {
                 rs = st.executeQuery(String.format("SELECT * FROM kelas WHERE id_kelas = %d", this.id_kelas));
                 while (rs.next()) {
-                    System.out.printf("\nID Kelas %-3dNama Kelas %-3s", rs.getInt("id_kelas"), rs.getString("nama_kelas"));
+                    System.out.printf("ID Kelas: %-3dNama Kelas: %-3s\n", rs.getInt("id_kelas"), rs.getString("nama_kelas"));
                 }
             } catch (SQLException e) {
                 System.out.println("Data kelas tidak ditemukan");

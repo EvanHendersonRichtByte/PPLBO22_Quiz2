@@ -40,9 +40,9 @@ public class Mahasiswa {
     public void read() {
         try {
             rs = st.executeQuery("SELECT * FROM mahasiswa JOIN kelas ON kelas.id_kelas = mahasiswa.id_kelas ORDER BY mahasiswa.id_kelas, mahasiswa.nama");
-            System.out.println("NIM        Nama                           No  Kelas");
+            System.out.println("NIM        Nama                                               No  Kelas");
             while (rs.next()) {
-                System.out.printf("%-10s %-30s %-3d %-3s\n", rs.getString("nim"), rs.getString("nama"), rs.getInt("no_presensi"), rs.getString("nama_kelas"));
+                System.out.printf("%-10s %-50s %-3d %-3s\n", rs.getString("nim"), rs.getString("nama"), rs.getInt("no_presensi"), rs.getString("nama_kelas"));
             }
         } catch (SQLException e) {
             System.out.println(e);

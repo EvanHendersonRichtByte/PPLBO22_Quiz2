@@ -5,10 +5,8 @@
 - CRUD Mahasiswa
 - CRUD Nilai
 - CRUD Kelas
-- CRUD Mata Kuliah
-### Fitur Kedepan
+- CRUD Mata 
 - CRUD Dosen
-- CRUD DPA 
 
 ### Dosen pengampu matakuliah
 Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom.

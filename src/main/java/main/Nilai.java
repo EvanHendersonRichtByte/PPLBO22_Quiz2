@@ -16,7 +16,7 @@ public class Nilai {
         in.nextLine();
         System.out.print("Masukkan NIM mahasiswa: ");
         nim = in.nextLine();
-        new Matkul().read();
+        Matkul.read();
         System.out.print("Masukkan ID Mata Kuliah: ");
         id_matkul = in.nextInt();
         for (int i = 0; i < nilai.length; i++) {
@@ -65,7 +65,7 @@ public class Nilai {
             System.out.print("NIM: ");
             nim = in.nextLine();
             read(nim);
-            new Matkul().read();
+            Matkul.read();
             System.out.println("ID Mata Kuliah yang ingin diubah");
             System.out.print("ID: ");
             id_matkul = in.nextInt();
@@ -122,7 +122,7 @@ public class Nilai {
             System.out.print("NIM: ");
             nim = in.nextLine();
             read(nim);
-            new Matkul().read();
+            Matkul.read();
             System.out.println("\nID Matkul yang akan dihapus");
             System.out.print("ID Matkul: ");
             id_matkul = in.nextInt();

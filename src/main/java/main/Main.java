@@ -84,10 +84,14 @@ public class Main {
                         menu();
                         pil2 = in.nextInt();
                         switch (pil2) {
-                            case 1 -> n.create();
-                            case 2 -> n.read("0");
-                            case 3 -> n.update();
-                            case 4 -> n.delete();
+                            case 1 ->
+                                n.create();
+                            case 2 ->
+                                Nilai.read("0");
+                            case 3 ->
+                                n.update();
+                            case 4 ->
+                                n.delete();
                             default -> {
                             }
                         }
@@ -102,7 +106,7 @@ public class Main {
                                 dsn.create();
                             }
                             case 2 ->
-                                dsn.read();
+                                Dosen.read();
                             case 3 ->
                                 dsn.update();
                             case 4 ->
@@ -152,5 +156,4 @@ public class Main {
             System.out.println(e);
         }
     }
-
 }

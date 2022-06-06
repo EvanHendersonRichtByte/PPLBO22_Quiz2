@@ -35,7 +35,7 @@ public class Main {
                         switch (pil2) {
                             case 1 -> {
                                 in.nextLine();
-                                mhs.create();
+//                                mhs.create();
                             }
                             case 2 ->
                                 mhs.read();

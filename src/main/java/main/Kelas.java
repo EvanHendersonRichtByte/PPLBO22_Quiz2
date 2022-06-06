@@ -32,6 +32,7 @@ public class Kelas {
             while (rs.next()) {
                 System.out.printf("ID Kelas: %-3dNama Kelas: %-3s\n", rs.getInt("id_kelas"), rs.getString("nama_kelas"));
             }
+            
         } catch (SQLException e) {
             System.out.println(e);
         }

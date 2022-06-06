@@ -5,6 +5,7 @@
 package main;
 
 import java.sql.*;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -15,6 +16,8 @@ public class AddMahasiswa extends javax.swing.JFrame {
     static Connection conn = null;
     static Statement st = null;
     static ResultSet rs = null;
+    static String hasil = null;
+    static int id_kelas = 0;
 
     /**
      * Creates new form Input
@@ -27,6 +30,16 @@ public class AddMahasiswa extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         initComponents();
+        kelas.setModel(new DefaultComboBoxModel<>(new String[]{
+            "pilih"
+        }));
+        try {
+            rs = st.executeQuery("SELECT nama_kelas FROM kelas");
+            while (rs.next()) {
+                kelas.addItem(rs.getString("nama_kelas"));
+            }
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -45,13 +58,13 @@ public class AddMahasiswa extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         nim = new javax.swing.JTextField();
         nama = new javax.swing.JTextField();
-        kelas = new javax.swing.JTextField();
         submitTambahMahasiswa1 = new javax.swing.JButton();
         no_presensi = new javax.swing.JTextField();
         header1 = new javax.swing.JLabel();
         backTambahMahasiswa = new javax.swing.JButton();
         submitUpdateMahasiswa = new javax.swing.JButton();
         submitDeleteMahasiswa = new javax.swing.JButton();
+        kelas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,12 +81,6 @@ public class AddMahasiswa extends javax.swing.JFrame {
         nim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nimActionPerformed(evt);
-            }
-        });
-
-        kelas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kelasActionPerformed(evt);
             }
         });
 
@@ -110,6 +117,13 @@ public class AddMahasiswa extends javax.swing.JFrame {
             }
         });
 
+        kelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------" }));
+        kelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kelasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -124,6 +138,10 @@ public class AddMahasiswa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(submitTambahMahasiswa1)
                 .addGap(55, 55, 55))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(kelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 67, Short.MAX_VALUE)
@@ -140,10 +158,7 @@ public class AddMahasiswa extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(no_presensi))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(kelas))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(90, 90, 90)
                             .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -152,7 +167,9 @@ public class AddMahasiswa extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(230, Short.MAX_VALUE)
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addComponent(kelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backTambahMahasiswa)
                     .addComponent(submitTambahMahasiswa1)
@@ -176,10 +193,8 @@ public class AddMahasiswa extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addComponent(no_presensi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(10, 10, 10)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
-                        .addComponent(kelas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 121, Short.MAX_VALUE)))
+                    .addComponent(jLabel5)
+                    .addGap(0, 135, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,36 +218,33 @@ public class AddMahasiswa extends javax.swing.JFrame {
     private void submitTambahMahasiswa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitTambahMahasiswa1ActionPerformed
         // TODO add your handling code here:
         try {
+            System.out.println(id_kelas);
 
             PreparedStatement stmt = conn.prepareStatement("insert into mahasiswa values(?,?,?,?)");
             stmt.setString(1, nim.getText());
             stmt.setString(2, nama.getText());
             stmt.setString(3, no_presensi.getText());
-            stmt.setString(4, kelas.getText());
+            stmt.setInt(4, id_kelas);
             stmt.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_submitTambahMahasiswa1ActionPerformed
 
     private void backTambahMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTambahMahasiswaActionPerformed
         // TODO add your handling code here:
         this.dispose();
-//        new MainGUI().setVisible(true);
     }//GEN-LAST:event_backTambahMahasiswaActionPerformed
 
     private void submitUpdateMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitUpdateMahasiswaActionPerformed
         // TODO add your handling code here:
         try {
-            st.executeUpdate(String.format("UPDATE mahasiswa SET nama = '%s', no_presensi = %d, id_kelas = %d WHERE nim = '%s'", this.nama.getText(), Integer.parseInt(this.no_presensi.getText()), Integer.parseInt(this.kelas.getText()), this.nim.getText()));
+            st.executeUpdate(String.format("UPDATE mahasiswa SET nama = '%s', no_presensi = %d, id_kelas = %d WHERE nim = '%s'", this.nama.getText(), Integer.parseInt(this.no_presensi.getText()), id_kelas, this.nim.getText()));
             System.out.println("Data mahasiswa berhasil diubah");
         } catch (SQLException e) {
             System.out.println("Data mahasiswa gagal dibuat, pastikan id kelas telah sesuai");
         }
     }//GEN-LAST:event_submitUpdateMahasiswaActionPerformed
-
-    private void kelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kelasActionPerformed
 
     private void submitDeleteMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitDeleteMahasiswaActionPerformed
         // TODO add your handling code here:
@@ -244,6 +256,18 @@ public class AddMahasiswa extends javax.swing.JFrame {
             System.out.println("Data mahasiswa gagal dihapus, pastikan nim telah sesuai dan nilai yang dimiliki kosong!");
         }
     }//GEN-LAST:event_submitDeleteMahasiswaActionPerformed
+
+    private void kelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelasActionPerformed
+        // TODO add your handling code here:
+        hasil = kelas.getSelectedItem().toString();
+        System.out.println(hasil);
+        try {
+            rs = st.executeQuery("SELECT id_kelas FROM kelas WHERE nama_kelas = '" + hasil + "'");
+            rs.next();
+            id_kelas = rs.getInt("id_kelas");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_kelasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,7 +313,7 @@ public class AddMahasiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField kelas;
+    private javax.swing.JComboBox<String> kelas;
     private javax.swing.JTextField nama;
     private javax.swing.JTextField nim;
     private javax.swing.JTextField no_presensi;

@@ -5,6 +5,7 @@
 package main;
 
 import java.sql.*;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -15,6 +16,8 @@ public class AddMatkul extends javax.swing.JFrame {
     static Connection conn = null;
     static Statement st = null;
     static ResultSet rs = null;
+    static String hasil;
+    static int id_dosen;
 
     /**
      * Creates new form Input
@@ -27,6 +30,16 @@ public class AddMatkul extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         initComponents();
+        dosen.setModel(new DefaultComboBoxModel<>(new String[]{
+            "pilih"
+        }));
+        try {
+            rs = st.executeQuery("SELECT nama_dosen FROM dosen");
+            while (rs.next()) {
+                dosen.addItem(rs.getString("nama_dosen"));
+            }
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -48,8 +61,8 @@ public class AddMatkul extends javax.swing.JFrame {
         backTambahMahasiswa = new javax.swing.JButton();
         submitUpdateMatkul = new javax.swing.JButton();
         submitDeleteMatkul = new javax.swing.JButton();
-        id_dosen = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        dosen = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +109,13 @@ public class AddMatkul extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("ID Dosen");
+        jLabel8.setText("Dosen");
+
+        dosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dosenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -116,11 +135,10 @@ public class AddMatkul extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel7))
                                 .addGap(56, 56, 56)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(id_matkul)
-                                        .addComponent(nama_matkul, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(id_dosen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(id_matkul)
+                                    .addComponent(nama_matkul, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(backTambahMahasiswa)
                                 .addGap(29, 29, 29)
@@ -146,15 +164,15 @@ public class AddMatkul extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(id_dosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(dosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backTambahMahasiswa)
                     .addComponent(submitTambahMatkul)
                     .addComponent(submitUpdateMatkul)
                     .addComponent(submitDeleteMatkul))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,7 +196,7 @@ public class AddMatkul extends javax.swing.JFrame {
     private void submitTambahMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitTambahMatkulActionPerformed
         // TODO add your handling code here:
         try {
-            st.executeUpdate(String.format("INSERT INTO matkul VALUES(null,'%s', %d)", this.nama_matkul.getText(), Integer.parseInt(id_dosen.getText())));
+            st.executeUpdate(String.format("INSERT INTO matkul VALUES(null,'%s', %d)", this.nama_matkul.getText(), id_dosen));
             System.out.println("Data matkul berhasil dibuat");
         } catch (SQLException e) {
             System.out.println(e);
@@ -188,13 +206,12 @@ public class AddMatkul extends javax.swing.JFrame {
     private void backTambahMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTambahMahasiswaActionPerformed
         // TODO add your handling code here:
         this.dispose();
-//        new MainGUI().setVisible(true);
     }//GEN-LAST:event_backTambahMahasiswaActionPerformed
 
     private void submitUpdateMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitUpdateMatkulActionPerformed
         // TODO add your handling code here:
         try {
-            st.executeUpdate(String.format("UPDATE matkul SET nama_matkul = '%s', id_dosen = %d WHERE id_matkul = %d", this.nama_matkul.getText(), Integer.parseInt(id_dosen.getText()), Integer.parseInt(this.id_matkul.getText())));
+            st.executeUpdate(String.format("UPDATE matkul SET nama_matkul = '%s', id_dosen = %d WHERE id_matkul = %d", this.nama_matkul.getText(), id_dosen, Integer.parseInt(this.id_matkul.getText())));
             System.out.println("Data matkul telah diubah");
         } catch (SQLException e) {
             System.out.println("Data matkul gagal diubah, pastikan mahasiswa di matkul tersebut kosong");
@@ -210,6 +227,18 @@ public class AddMatkul extends javax.swing.JFrame {
             System.out.println("Data matkul gagal dihapus, pastikan data pada tabel mahasiswa dan nilai di matkul tersebut kosong");
         }
     }//GEN-LAST:event_submitDeleteMatkulActionPerformed
+
+    private void dosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosenActionPerformed
+        // TODO add your handling code here:
+        hasil = dosen.getSelectedItem().toString();
+        System.out.println(hasil);
+        try {
+            rs = st.executeQuery("SELECT id_dosen FROM dosen WHERE nama_dosen = '" + hasil + "'");
+            rs.next();
+            id_dosen = rs.getInt("id_dosen");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_dosenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,8 +284,8 @@ public class AddMatkul extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backTambahMahasiswa;
+    private javax.swing.JComboBox<String> dosen;
     private javax.swing.JLabel header1;
-    private javax.swing.JTextField id_dosen;
     private javax.swing.JTextField id_matkul;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

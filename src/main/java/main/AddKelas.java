@@ -11,6 +11,7 @@ import java.sql.*;
  * @author Evan Henderson
  */
 public class AddKelas extends javax.swing.JFrame {
+
     static Connection conn = null;
     static Statement st = null;
     static ResultSet rs = null;
@@ -175,7 +176,6 @@ public class AddKelas extends javax.swing.JFrame {
     private void backTambahMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTambahMahasiswaActionPerformed
         // TODO add your handling code here:
         this.dispose();
-//        new MainGUI().setVisible(true);
     }//GEN-LAST:event_backTambahMahasiswaActionPerformed
 
     private void submitUpdateKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitUpdateKelasActionPerformed

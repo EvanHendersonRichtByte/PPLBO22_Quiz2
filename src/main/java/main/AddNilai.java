@@ -1,11 +1,15 @@
 package main;
 
 import java.sql.*;
+import javax.swing.DefaultComboBoxModel;
 
 public class AddNilai extends javax.swing.JFrame {
+
     static Connection conn = null;
     static Statement st = null;
     static ResultSet rs = null;
+    static int id_matkul;
+    static String nim, nama_mahasiswa, nama_matakuliah;
 
     /**
      * Creates new form Input
@@ -15,9 +19,32 @@ public class AddNilai extends javax.swing.JFrame {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pplbo_quiz2", "root", "");
             System.out.println("Connected to database");
             st = conn.createStatement();
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         initComponents();
+        mahasiswa.setModel(new DefaultComboBoxModel<>(new String[]{
+            "pilih"
+        }));
+        try {
+            rs = st.executeQuery("SELECT nama FROM mahasiswa");
+            while (rs.next()) {
+                mahasiswa.addItem(rs.getString("nama"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        matkul.setModel(new DefaultComboBoxModel<>(new String[]{
+            "pilih"
+        }));
+        try {
+            rs = st.executeQuery("SELECT nama_matkul FROM matkul");
+            while (rs.next()) {
+                matkul.addItem(rs.getString("nama_matkul"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -34,9 +61,7 @@ public class AddNilai extends javax.swing.JFrame {
         id_data_nilai = new javax.swing.JTextField();
         header1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        nim = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        id_matkul = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         tugas1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -59,6 +84,8 @@ public class AddNilai extends javax.swing.JFrame {
         submitDeleteNilai = new javax.swing.JButton();
         submitUpdateNilai = new javax.swing.JButton();
         submitTambahNilai = new javax.swing.JButton();
+        mahasiswa = new javax.swing.JComboBox<>();
+        matkul = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,21 +102,9 @@ public class AddNilai extends javax.swing.JFrame {
 
         header1.setText("Nilai");
 
-        jLabel8.setText("NIM");
+        jLabel8.setText("Mahasiswa");
 
-        nim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nimActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("ID Matkul");
-
-        id_matkul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_matkulActionPerformed(evt);
-            }
-        });
+        jLabel9.setText("Matakuliah");
 
         jLabel10.setText("Tugas 1");
 
@@ -191,75 +206,91 @@ public class AddNilai extends javax.swing.JFrame {
             }
         });
 
+        mahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mahasiswaActionPerformed(evt);
+            }
+        });
+
+        matkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matkulActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(backTambahMahasiswa)
-                        .addGap(29, 29, 29)
-                        .addComponent(submitDeleteNilai)
-                        .addGap(18, 18, 18)
-                        .addComponent(submitUpdateNilai)
-                        .addGap(18, 18, 18)
-                        .addComponent(submitTambahNilai))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel12)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel18))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(uas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(305, 305, 305))
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(id_data_nilai, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tugas4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tugas3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tugas2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tugas1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel17)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(uts, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel16)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel15)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel14)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                                            .addComponent(tugas5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(id_data_nilai, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(id_matkul, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nim, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 23, Short.MAX_VALUE))
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel9))
+                                    .addGap(167, 167, 167)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(mahasiswa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(matkul, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(backTambahMahasiswa)
+                                .addGap(29, 29, 29)
+                                .addComponent(submitDeleteNilai)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(submitUpdateNilai)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(submitTambahNilai))))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tugas4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tugas3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tugas2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tugas1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(82, 82, 82))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tugas5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(83, 83, 83)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addGap(103, 103, 103)
+                                .addComponent(uts, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(90, 90, 90)
+                                .addComponent(quiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(90, 90, 90)
+                                .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(uas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(23, 23, 23))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,14 +302,14 @@ public class AddNilai extends javax.swing.JFrame {
                     .addComponent(id_data_nilai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(id_matkul, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(matkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -298,10 +329,6 @@ public class AddNilai extends javax.swing.JFrame {
                             .addComponent(jLabel13)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tugas5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(quiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -311,12 +338,16 @@ public class AddNilai extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(uts, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))))
-                .addGap(18, 18, 18)
+                            .addComponent(jLabel17))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(uas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(uas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
-                .addGap(18, 18, 18)
+                    .addComponent(tugas5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backTambahMahasiswa)
                     .addComponent(submitTambahNilai)
@@ -345,9 +376,11 @@ public class AddNilai extends javax.swing.JFrame {
 
     private void submitTambahNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitTambahNilaiActionPerformed
         // TODO add your handling code here:
+        System.out.println("NIM:"  + nim);
+        System.out.println("ID Matkul: " + id_matkul);
         String format = String.format("%d, %d, %d, %d, %d, %d, %d, %d, %d", Integer.parseInt(tugas1.getText()), Integer.parseInt(tugas2.getText()), Integer.parseInt(tugas3.getText()), Integer.parseInt(tugas4.getText()), Integer.parseInt(tugas5.getText()), Integer.parseInt(quiz1.getText()), Integer.parseInt(quiz2.getText()), Integer.parseInt(uts.getText()), Integer.parseInt(uas.getText()));
         try {
-            st.executeUpdate(String.format("INSERT INTO nilai VALUES (NULL, '%s', %d, %s NULL)", nim.getText(), Integer.parseInt(id_matkul.getText()), format));
+            st.executeUpdate(String.format("INSERT INTO nilai VALUES (NULL, '%s', %d, %s, NULL)", nim, id_matkul, format));
             System.out.println("Data nilai berhasil dibuat");
         } catch (SQLException e) {
             System.out.println(e);
@@ -357,14 +390,13 @@ public class AddNilai extends javax.swing.JFrame {
     private void backTambahMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTambahMahasiswaActionPerformed
         // TODO add your handling code here:
         this.dispose();
-//        new MainGUI().setVisible(true);
     }//GEN-LAST:event_backTambahMahasiswaActionPerformed
 
     private void submitUpdateNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitUpdateNilaiActionPerformed
         // TODO add your handling code here:
         String format = String.format("tugas1 = %d,tugas2 = %d,tugas3 = %d,tugas4 = %d,tugas5 = %d,quiz1 = %d,quiz2 = %d,uts = %d,uas = %d", Integer.parseInt(tugas1.getText()), Integer.parseInt(tugas2.getText()), Integer.parseInt(tugas3.getText()), Integer.parseInt(tugas4.getText()), Integer.parseInt(tugas5.getText()), Integer.parseInt(quiz1.getText()), Integer.parseInt(quiz2.getText()), Integer.parseInt(uts.getText()), Integer.parseInt(uas.getText()));
         try {
-            String finalization = String.format("UPDATE nilai SET %s , nim = %s, id_matkul = %d WHERE id_data_nilai = %d", format, nim.getText(), Integer.parseInt(id_matkul.getText()), Integer.parseInt(id_data_nilai.getText()));
+            String finalization = String.format("UPDATE nilai SET %s , nim = %s, id_matkul = %d WHERE id_data_nilai = %d", format, nim, id_matkul, Integer.parseInt(id_data_nilai.getText()));
             System.out.println(finalization);
             st.executeUpdate(finalization);
             System.out.println("Data nilai berhasil dibuat");
@@ -382,14 +414,6 @@ public class AddNilai extends javax.swing.JFrame {
             System.out.println("Data nilai gagal dihapus, pastikan data masukkan telah benar");
         }
     }//GEN-LAST:event_submitDeleteNilaiActionPerformed
-
-    private void nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nimActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nimActionPerformed
-
-    private void id_matkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_matkulActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_id_matkulActionPerformed
 
     private void tugas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tugas1ActionPerformed
         // TODO add your handling code here:
@@ -426,6 +450,30 @@ public class AddNilai extends javax.swing.JFrame {
     private void uasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_uasActionPerformed
+
+    private void mahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mahasiswaActionPerformed
+        // TODO add your handling code here:
+        nama_mahasiswa = mahasiswa.getSelectedItem().toString();
+        System.out.println(nama_mahasiswa);
+        try {
+            rs = st.executeQuery("SELECT nim FROM mahasiswa WHERE nama = '" + nama_mahasiswa + "'");
+            rs.next();
+            nim = rs.getString("nim");
+        } catch (SQLException e) {
+        }
+    }//GEN-LAST:event_mahasiswaActionPerformed
+
+    private void matkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matkulActionPerformed
+        // TODO add your handling code here:
+        nama_matakuliah = matkul.getSelectedItem().toString();
+        System.out.println(nama_matakuliah);
+        try {
+            rs = st.executeQuery("SELECT id_matkul FROM matkul WHERE nama_matkul = '" + nama_matakuliah + "'");
+            rs.next();
+            id_matkul = rs.getInt("id_matkul");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_matkulActionPerformed
 
     /**
      * @param args the command line arguments
@@ -473,7 +521,6 @@ public class AddNilai extends javax.swing.JFrame {
     private javax.swing.JButton backTambahMahasiswa;
     private javax.swing.JLabel header1;
     private javax.swing.JTextField id_data_nilai;
-    private javax.swing.JTextField id_matkul;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -487,7 +534,8 @@ public class AddNilai extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField nim;
+    private javax.swing.JComboBox<String> mahasiswa;
+    private javax.swing.JComboBox<String> matkul;
     private javax.swing.JTextField quiz1;
     private javax.swing.JTextField quiz2;
     private javax.swing.JButton submitDeleteNilai;

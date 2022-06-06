@@ -173,17 +173,6 @@ public class MainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        inputMahasiswa = new javax.swing.JFrame();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        nim1 = new javax.swing.JTextField();
-        nama1 = new javax.swing.JTextField();
-        kelas1 = new javax.swing.JTextField();
-        submitTambahMahasiswa1 = new javax.swing.JButton();
-        header1 = new javax.swing.JLabel();
-        no_presensi1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelMahasiswa = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -195,135 +184,6 @@ public class MainGUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-
-        jLabel5.setText("Kelas");
-
-        jLabel6.setText("NIM");
-
-        jLabel7.setText("Nama");
-
-        jLabel8.setText("No Presensi");
-
-        nim1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nim1ActionPerformed(evt);
-            }
-        });
-
-        kelas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kelas1ActionPerformed(evt);
-            }
-        });
-
-        submitTambahMahasiswa1.setText("Submit");
-        submitTambahMahasiswa1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitTambahMahasiswa1ActionPerformed(evt);
-            }
-        });
-
-        header1.setText("Tambah Mahasiswa");
-
-        no_presensi1.setActionCommand("<Not Set>");
-        no_presensi1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        javax.swing.GroupLayout inputMahasiswaLayout = new javax.swing.GroupLayout(inputMahasiswa.getContentPane());
-        inputMahasiswa.getContentPane().setLayout(inputMahasiswaLayout);
-        inputMahasiswaLayout.setHorizontalGroup(
-            inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(no_presensi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(header1)))
-                .addContainerGap(168, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputMahasiswaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputMahasiswaLayout.createSequentialGroup()
-                        .addComponent(submitTambahMahasiswa1)
-                        .addGap(107, 107, 107))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputMahasiswaLayout.createSequentialGroup()
-                        .addComponent(kelas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel5)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel6)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(nim1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(nama1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        inputMahasiswaLayout.setVerticalGroup(
-            inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputMahasiswaLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(submitTambahMahasiswa1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(header1)
-                .addGap(61, 61, 61)
-                .addComponent(kelas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(no_presensi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel5)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel6)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(nim1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(inputMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(inputMahasiswaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(nama1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Penilaian Mahasiswa");
@@ -345,7 +205,7 @@ public class MainGUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabelMahasiswa);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(160, 30, 452, 240);
+        jScrollPane2.setBounds(160, 30, 710, 240);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -445,12 +305,8 @@ public class MainGUI extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 669, 338);
+        setBounds(0, 0, 911, 338);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1MouseClicked
 
     private void sidebarMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidebarMahasiswaActionPerformed
         // TODO add your handling code here:
@@ -476,23 +332,15 @@ public class MainGUI extends javax.swing.JFrame {
         new AddKelas().setVisible(true);
     }//GEN-LAST:event_sidebarKelasActionPerformed
 
-    private void submitTambahMahasiswa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitTambahMahasiswa1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submitTambahMahasiswa1ActionPerformed
-
-    private void kelas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kelas1ActionPerformed
-
-    private void nim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nim1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nim1ActionPerformed
-
     private void sidebarDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidebarDosenActionPerformed
         // TODO add your handling code here:
-        new AddDosen().setVisible(true);
         this.tampilDataDosen();
+        new AddDosen().setVisible(true);
     }//GEN-LAST:event_sidebarDosenActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -532,27 +380,16 @@ public class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel header1;
-    private javax.swing.JFrame inputMahasiswa;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField kelas1;
-    private javax.swing.JTextField nama1;
-    private javax.swing.JTextField nim1;
-    private javax.swing.JTextField no_presensi1;
     private javax.swing.JButton sidebarDosen;
     private javax.swing.JButton sidebarKelas;
     private javax.swing.JButton sidebarMahasiswa;
     private javax.swing.JButton sidebarMatkul;
     private javax.swing.JButton sidebarNilai;
-    private javax.swing.JButton submitTambahMahasiswa1;
     private javax.swing.JTable tabelMahasiswa;
     // End of variables declaration//GEN-END:variables
 }

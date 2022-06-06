@@ -59,12 +59,10 @@
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="id_matkul" max="32767" attributes="0"/>
-                                          <Component id="nama_matkul" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="id_dosen" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="id_matkul" max="32767" attributes="0"/>
+                                      <Component id="nama_matkul" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
+                                      <Component id="dosen" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -100,8 +98,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="id_dosen" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dosen" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -110,7 +108,7 @@
                       <Component id="submitUpdateMatkul" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="submitDeleteMatkul" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -173,12 +171,23 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitDeleteMatkulActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="id_dosen">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID Dosen"/>
+            <Property name="text" type="java.lang.String" value="Dosen"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="dosen">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dosenActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

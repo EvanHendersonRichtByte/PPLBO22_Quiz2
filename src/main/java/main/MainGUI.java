@@ -181,6 +181,11 @@ public class MainGUI extends javax.swing.JFrame {
         sidebarNilai = new javax.swing.JButton();
         sidebarMatkul = new javax.swing.JButton();
         sidebarKelas = new javax.swing.JButton();
+        plusMHS = new javax.swing.JButton();
+        plusDSN = new javax.swing.JButton();
+        plusN = new javax.swing.JButton();
+        plusKLS = new javax.swing.JButton();
+        plusMK = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -259,6 +264,51 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        plusMHS.setText("+");
+        plusMHS.setBorder(null);
+        plusMHS.setBorderPainted(false);
+        plusMHS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusMHSActionPerformed(evt);
+            }
+        });
+
+        plusDSN.setText("+");
+        plusDSN.setBorder(null);
+        plusDSN.setBorderPainted(false);
+        plusDSN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusDSNActionPerformed(evt);
+            }
+        });
+
+        plusN.setText("+");
+        plusN.setBorder(null);
+        plusN.setBorderPainted(false);
+        plusN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusNActionPerformed(evt);
+            }
+        });
+
+        plusKLS.setText("+");
+        plusKLS.setBorder(null);
+        plusKLS.setBorderPainted(false);
+        plusKLS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusKLSActionPerformed(evt);
+            }
+        });
+
+        plusMK.setText("+");
+        plusMK.setBorder(null);
+        plusMK.setBorderPainted(false);
+        plusMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusMKActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -266,31 +316,58 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sidebarDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sidebarNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sidebarMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sidebarKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sidebarMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(sidebarDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(plusDSN, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(sidebarNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(plusN, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(sidebarMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(plusMK, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(sidebarKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(plusKLS, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(sidebarMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(plusMHS, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sidebarMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sidebarMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plusMHS, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sidebarDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sidebarDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plusDSN, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sidebarNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sidebarNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plusN, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sidebarKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sidebarKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plusKLS, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sidebarMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sidebarMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plusMK, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 30, 120, 180);
+        jPanel1.setBounds(10, 30, 130, 180);
 
         jMenu1.setText("File");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -311,36 +388,56 @@ public class MainGUI extends javax.swing.JFrame {
     private void sidebarMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidebarMahasiswaActionPerformed
         // TODO add your handling code here:
         this.tampilDataMahasiswa();
-        new AddMahasiswa().setVisible(true);
     }//GEN-LAST:event_sidebarMahasiswaActionPerformed
 
     private void sidebarNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidebarNilaiActionPerformed
         // TODO add your handling code here:
         this.tampilDataNilai();
-        new AddNilai().setVisible(true);
     }//GEN-LAST:event_sidebarNilaiActionPerformed
 
     private void sidebarMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidebarMatkulActionPerformed
         // TODO add your handling code here:
         this.tampilDataMatkul();
-        new AddMatkul().setVisible(true);
     }//GEN-LAST:event_sidebarMatkulActionPerformed
 
     private void sidebarKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidebarKelasActionPerformed
         // TODO add your handling code here:
         this.tampilDataKelas();
-        new AddKelas().setVisible(true);
     }//GEN-LAST:event_sidebarKelasActionPerformed
 
     private void sidebarDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sidebarDosenActionPerformed
         // TODO add your handling code here:
         this.tampilDataDosen();
-        new AddDosen().setVisible(true);
     }//GEN-LAST:event_sidebarDosenActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void plusMHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMHSActionPerformed
+        // TODO add your handling code here:
+        new AddMahasiswa().setVisible(true);
+    }//GEN-LAST:event_plusMHSActionPerformed
+
+    private void plusDSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusDSNActionPerformed
+        // TODO add your handling code here:
+        new AddDosen().setVisible(true);
+    }//GEN-LAST:event_plusDSNActionPerformed
+
+    private void plusNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusNActionPerformed
+        // TODO add your handling code here:
+        new AddNilai().setVisible(true);
+    }//GEN-LAST:event_plusNActionPerformed
+
+    private void plusKLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusKLSActionPerformed
+        // TODO add your handling code here:
+        new AddKelas().setVisible(true);
+    }//GEN-LAST:event_plusKLSActionPerformed
+
+    private void plusMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMKActionPerformed
+        // TODO add your handling code here:
+        new AddMatkul().setVisible(true);
+    }//GEN-LAST:event_plusMKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,6 +482,11 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton plusDSN;
+    private javax.swing.JButton plusKLS;
+    private javax.swing.JButton plusMHS;
+    private javax.swing.JButton plusMK;
+    private javax.swing.JButton plusN;
     private javax.swing.JButton sidebarDosen;
     private javax.swing.JButton sidebarKelas;
     private javax.swing.JButton sidebarMahasiswa;
